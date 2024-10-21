@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contagem Regressiva - 31 de Outubro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      background-image: url('link-da-sua-imagem.png'); /* Insira o link da imagem */
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      text-align: center;
+    }
+
+    #texto {
+      font-size: 2em;
+      margin-bottom: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    #contador {
+      font-size: 3em;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="texto">Um lançamento que vai mudar totalmente o mercado de apostas esportivas!</div>
+  <div id="contador"></div>
+
+  <script>
+    const contador = document.getElementById('contador');
+    const dataLancamento = new Date('Oct 31, 2024 23:59:59').getTime();
+
+    const intervalo = setInterval(() => {
+      const agora = new Date().getTime();
+      const distancia = dataLancamento - agora;
+
+      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+      contador.innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+
+      if (distancia < 0) {
+        clearInterval(intervalo);
+        contador.innerHTML = "Lançamento!";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
